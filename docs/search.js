@@ -1,5 +1,6 @@
 // search.js
 const filterContainer = document.getElementById('filterContainer');
+const searchInput = document.getElementById('searchInput');
 const cards = document.querySelectorAll('.card');
 const globalSearchResults = document.getElementById('globalSearchResults');
 const introSection = document.getElementById('introSection');
@@ -80,25 +81,24 @@ const globalData = [
     });
 
     function applyFilters() {
+        const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+
         if (cards.length > 0) {
             // Local page filter
             cards.forEach(card => {
-                if (activeFilters.size === 0) {
-                    card.style.display = 'block';
-                    return;
-                }
-                
                 const cardTags = Array.from(card.querySelectorAll('.tag')).map(t => t.textContent.trim());
                 // Card must have ALL active filters to be shown (AND logic)
-                const hasAllFilters = Array.from(activeFilters).every(filter => cardTags.includes(filter));
+                const hasAllFilters = activeFilters.size === 0 || Array.from(activeFilters).every(filter => cardTags.includes(filter));
+                const cardText = card.textContent.toLowerCase();
+                const matchesSearch = searchTerm === '' || cardText.includes(searchTerm);
                 
-                card.style.display = hasAllFilters ? 'block' : 'none';
+                card.style.display = (hasAllFilters && matchesSearch) ? 'block' : 'none';
             });
         } else if (globalSearchResults) {
             // Global index filter
             globalSearchResults.innerHTML = '';
             
-            if (activeFilters.size === 0) {
+            if (activeFilters.size === 0 && searchTerm.trim() === '') {
                 globalSearchResults.style.display = 'none';
                 if (introSection) introSection.style.display = 'block';
                 return;
@@ -109,9 +109,11 @@ const globalData = [
 
             let matchCount = 0;
             globalData.forEach(item => {
-                const hasAllFilters = Array.from(activeFilters).every(filter => item.tags.includes(filter));
+                const hasAllFilters = activeFilters.size === 0 || Array.from(activeFilters).every(filter => item.tags.includes(filter));
+                const searchableText = `${item.title.toLowerCase()} ${item.text.toLowerCase()}`;
+                const matchesSearch = searchTerm === '' || searchableText.includes(searchTerm);
                 
-                if (hasAllFilters) {
+                if (hasAllFilters && matchesSearch) {
                     matchCount++;
                     const cardDiv = document.createElement('div');
                     cardDiv.className = 'card';
@@ -131,4 +133,8 @@ const globalData = [
                 globalSearchResults.innerHTML = '<p style="grid-column: 1 / -1; text-align: center;">No results found for selected filters.</p>';
             }
         }
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener('input', applyFilters);
     }
