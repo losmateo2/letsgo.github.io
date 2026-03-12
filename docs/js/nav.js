@@ -11,6 +11,7 @@ const navHTML = `
         <a href="installing.html">Installing</a>
         <a href="support.html">Support</a>
         <a href="events.html">Events</a>
+        <a href="ai.html">AI</a>
     </nav>
 `;
 

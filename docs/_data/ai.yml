@@ -1,0 +1,8 @@
+---
+- title: "Killing the GPU Band-Aid: Why OpenShift 4.20 is trading DAS for DRA"
+  difficulty: "Advanced"
+  topic: "OpenShift"
+  type: "Article"
+  desc: "An overview of why OpenShift 4.20 is transitioning from DevicePlugin API (DAS) to Dynamic Resource Allocation (DRA) for GPU workloads."
+  link: "https://medium.com/@tcij1013/killing-the-gpu-band-aid-why-openshift-4-20-is-trading-das-for-dra-e2796c837264"
+  link_text: "Read Article"
