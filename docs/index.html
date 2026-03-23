@@ -32,6 +32,24 @@
             <h2>Welcome to the Hub</h2>
             <p>Select a category from the navigation menu above to explore documentation, tutorials, and best practices for managing your Red Hat ecosystem.</p>
         </section>
+
+        <section class="highlights-section">
+            <h2>Highlights</h2>
+            <div class="grid-container">
+                {% for item in site.data.highlights %}
+                <div class="card">
+                    <h3>{{ item.title }}</h3>
+                    <div class="tags-container">
+                        <span class="tag tag-difficulty">{{ item.difficulty }}</span>
+                        <span class="tag tag-topic">{{ item.topic }}</span>
+                        <span class="tag tag-type">{{ item.type }}</span>
+                    </div>
+                    <p>{{ item.desc }}</p>
+                    <a href="{{ item.link }}" target="_blank" rel="noopener noreferrer">{{ item.link_text }} &rarr;</a>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
     </main>
 
     <script src="js/nav.js"></script>
