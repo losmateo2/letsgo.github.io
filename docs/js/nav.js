@@ -3,10 +3,11 @@
 const navHTML = `
     <nav>
         <a href="index.html">Home</a>
-        <a href="learning.html">Learning Resources</a>
+        <a href="learning.html">Learning</a>
         <a href="virtualization.html">Virtualization</a>
         <a href="security.html">Security</a>
         <a href="console.html">Console</a>
+        <a href="networking.html">Networking</a>
         <a href="monitoring.html">Monitoring</a>
         <a href="installing.html">Installing</a>
         <a href="support.html">Support</a>
