@@ -1,0 +1,8 @@
+---
+- title: "OpenShift Networking Evolved: Real Routing, No NAT or Asymmetry"
+  difficulty: "Advanced"
+  topic: "OpenShift"
+  type: "Article"
+  desc: "Learn how modern OpenShift networking unlocks your data center with real routing, eliminating NAT and asymmetry issues."
+  link: "https://developers.redhat.com/articles/2026/02/19/openshift-networking-evolved-real-routing-no-nat-or-asymmetry?sc_cid=RHCTG0250000468977&source=sso#the_payoff__unlocking_your_data_center"
+  link_text: "Read Article"
